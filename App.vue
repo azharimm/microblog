@@ -1,5 +1,6 @@
 <template>
     <div>
+        <input type="text" :value="currentHashtag" @input="setHashtag">
         <Card v-for="post in filteredPost" :key="post">
             <template v-slot:title>
 				{{post.title}}
@@ -32,8 +33,14 @@ export default {
             return store.state.posts.filter(post => post.hashtags.includes(store.state.currentHashtag))
         });
 
+        const setHashtag = (event) => {
+            store.setHashtag(event.target.value);
+        }
+
         return {
             filteredPost,
+            currentHashtag: computed(() => store.state.currentHashtag),
+            setHashtag
         }
     }
 }
