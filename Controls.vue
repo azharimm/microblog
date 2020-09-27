@@ -3,7 +3,7 @@
 		<button>
 			{{ post.likes }}
 		</button>
-		<Hashtag v-for="tag in post.hashtags" :key="tag" :hashtag="tag" @setHashtag="setHashtag" />
+		<Hashtag v-for="tag in post.hashtags" :key="tag" :hashtag="tag" />
 	</div>
 </template>
 
@@ -17,16 +17,6 @@ export default {
 	},
 	components: {
 		Hashtag,
-	},
-	setup(props, ctx) {
-        const setHashtag = (tag) => {
-            console.log(tag);
-            ctx.emit('setHashtag', tag);
-        }
-
-        return {
-            setHashtag
-        }
 	},
 };
 </script>
