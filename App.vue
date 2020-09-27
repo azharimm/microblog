@@ -26,19 +26,13 @@ export default {
         Controls
     },
     setup() {
-        const filteredPost = computed(() => {
-            if(!store.state.currentHashtag) {
-                return store.state.posts;
-            }
-            return store.state.posts.filter(post => post.hashtags.includes(store.state.currentHashtag))
-        });
 
         const setHashtag = (event) => {
             store.setHashtag(event.target.value);
         }
 
         return {
-            filteredPost,
+            filteredPost: store.filteredPosts,
             currentHashtag: computed(() => store.state.currentHashtag),
             setHashtag
         }
